@@ -1,0 +1,98 @@
+:root {
+    --cardW: 250px;
+    --cardH: 400px;
+    --fontFam: "Open Sans", sans-serif;
+    --color1: #212534;
+    --color2: #fff;
+    --color3: #191c29;
+}
+body {
+    background: url("About_us.png");
+    background-size: cover;
+}
+p{
+    color: rgb(255, 255, 255); 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.section-header {
+    text-align: center;
+    margin: 0 auto;
+    padding: 50px 0;
+    font-family: "Abril Fatface";
+    font-size: 60px;
+    font-weight: bolder;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 6px;  
+  }
+.flipcards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 69vh;
+    gap: 5em;
+    font-family: var(--fontFam);
+}
+.flipcards .flipcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: var(--cardW);
+    height: var(--cardH);
+    border-radius: 10px;
+    perspective: 1000px;
+    box-shadow: 0;
+}
+
+.flipcards .flipcard:hover .flipcard__inner {
+    transform: rotateY(-180deg);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.55) 0px -2px 6px 0px inset;
+}
+.flipcards .flipcard__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+}
+.flipcards .flipcard__inner .__front, .flipcards .flipcard__inner .__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /* Safari */
+    -webkit-backface-visibility: hidden;    
+    backface-visibility: hidden;
+    border-radius: 0.5em;
+    overflow: hidden;
+    background-color: var(--color2);
+}
+.flipcards .flipcard__inner .__front {
+    /* The z-index property specifies the stack order of an element.
+
+An element with greater stack order is always in front of an element with a lower stack order. */
+    z-index: 1;
+    /* The flex-flow CSS shorthand property specifies the direction of a flex container, as well as its wrapping behavior. */
+    flex-flow: column;
+    border: 3px solid grey;
+    background-image: url("00.jpg");
+    background-size: cover;
+
+}
+.flipcards .flipcard__inner .__front * {
+    margin: 0;
+}
+.flipcards .flipcard__inner .__back {
+    transform: rotateY(-180deg);
+    z-index: 2;
+    background-color: #000;
+}
+.flipcards .flipcard__inner .__back p {
+    font-size: 33px;
+}

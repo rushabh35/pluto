@@ -1,0 +1,218 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Virtual Assistant Pluto</title>
+    <link rel="stylesheet" href="website_style.css">
+	<link rel="stylesheet" href="clock.css">
+	<link rel="stylesheet" href="wave.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <style>
+        
+body{background-color: rgb(143, 99, 99);}
+h1{color: rgb(255, 255, 255);}
+    </style>
+</head>
+
+<body onload="greeting()">
+    <ul class="pluto">
+        <div class="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+        <li>
+            <p>   </p>
+            <img src="MIC.png" height="50px" width="50px">
+        </li>
+        <h1>
+            PLUTO
+        </h1>
+    </ul> 
+    <nav>
+        <div class="menu">
+
+            <p>   </p>
+
+            <ul class="topnav">
+                <li><a href="Instructions_4.html">Instructions</a></li>
+                            <li><a href="About_Us.html">About Us</a></li>
+                            <li><a href="team.html">Team</a></li>
+                            <li><a href="Contact_Us.html">Contact Us</a></li>
+                            
+                <!-- <li class="topnav-right"><a href="#signup"><b>Chat</b></a></li> -->
+            </ul>
+        </div>
+    </nav>
+    
+<!-- <h1> Hello , I am Pluto , Your Virtual Assistant , How Can I Help You ?</h1> -->
+ <div class="wrapper">
+    <ul class = "dynamic-texts">
+        <li><span>Hi I'm Your Virtual Assistant PLUTO...</span></li>
+        <li><span>How May I Help You..?</span></li>
+    </ul>
+</div>
+<div class="wrapper1">
+    <div class="actions">
+        <button id="start">Talk</button>
+        <button id="end">End</button>
+    </div>
+    <div id="transcript">
+        
+    </div>
+</div>
+<script>
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+const transcript_element = document.getElementById("transcript");
+const talk_button = document.getElementById("start");
+const end_button = document.getElementById("end");
+
+let p = document.createElement("p");
+transcript_element.appendChild(p);
+
+recognition.addEventListener("result", (e) =>{
+    const transcript = Array.from(e.results)
+    .map(result => result [0])
+    .map(result => result.transcript)
+    .join("");
+    p.textContent = transcript;
+    if(e.results[0].isFinal){
+        p = document.createElement("p")
+        p.textContent = transcript;
+        transcript_element.appendChild(p);
+        p.textContent = "";
+
+
+        if(transcript.includes("YouTube")){
+            
+            window.open('https://www.youtube.com/')
+        }
+        if(transcript.includes("Wikipedia")){
+            window.open('https://www.wikipedia.org/')
+        }
+        if(transcript.includes("Spotify"))
+        {
+            window.open('https://www.spotify.org/')
+        }
+        if(transcript.includes("Instagram"))
+        {
+            window.open('https://www.instagram.com')
+        }
+        if(transcript.includes("WhatsApp"))
+        {
+            window.open('https://web.whatsapp.com')
+        }
+        if(transcript.includes("Facebook"))
+        {
+            window.open('https://www.facebook.com/')
+        }
+        if(transcript.includes("telegram"))
+        {
+            window.open('https://web.telegram.org/z/')
+        }
+        if(transcript.includes("Google"))
+        {
+            window.open('https://www.google.co.in')
+        }
+        if(transcript.includes("Stocks"))
+        {
+            window.open('https://www.moneycontrol.com')
+        }
+        if(transcript.includes("cricket"))
+        {
+            window.open('https://cricbuzz.com')
+        }
+        if(transcript.includes("Cricket"))
+        {
+            window.open('https://cricbuzz.com')
+        }
+        if(transcript.includes("Football"))
+        {
+            window.open('https://www.goal.com/en-in/live-scores')
+        }
+        if(transcript.includes("emergency number"))
+        {
+            window.open('https://indianhelpline.com')
+        }
+        if(transcript.includes("Emergency number"))
+        {
+            window.open('https://indianhelpline.com')
+        }
+        if(transcript.includes("weather"))
+        {
+            window.open('https://www.weather.com')
+        }
+        if(transcript.includes("Weather"))
+        {
+            window.open('https://www.weather.com')
+        }
+        if(transcript.includes("sports news"))
+        {
+            window.open('https://www.espn.in')
+        }
+        if(transcript.includes("Maps"))
+        {
+            window.open('https://www.google.com/maps')
+        }
+        if(transcript.includes("Games"))
+        {
+            window.open('https://elgoog.im/')
+        }
+        if(transcript.includes("search"))
+        {
+            // readout("Searching");
+            let input = transcript.split("");
+            input.splice(0,11);
+            input.pop();
+            input = input.join("").split("").join("+");
+            console.log(input);
+            window.open('https://www.google.com/search?q=4{input}')
+        }
+            if(transcript.includes("play"))
+            
+            {
+                // readout("Playing");
+                let input = transcript.split("");
+                input.splice(0,11);
+                input.pop();
+                input = input.join("").split("").join("+");
+                console.log(input);
+                window.open('https://www.youtube.com/search?q=${input}')
+        }
+       
+        
+    }
+
+});
+
+function greeting(){
+    alert("Have A Good Day !")
+}
+recognition.addEventListener("end", ()=>{
+    end_button.disabled = false;
+    talk_button.disabled = true;
+});
+talk_button.addEventListener("click", () =>{
+    end_button.disabled = false;
+    talk_button.disabled = true;
+    recognition.start();
+});
+end_button.addEventListener("click", () => {
+    end_button.disabled = true;
+    talk_button.disabled = false;
+
+    recognition.stop();
+});
+
+</script>
+<div class="grid place-items-center w-full overflow-x-hidden">
+
+        <section id="clock" class="font-display text-6xl md:text-8xl xl:text-9xl mt-10 mb-10"></section>
+      
+      </div>
+        <script src="clock.js"></script>
+</body>
+</html> 

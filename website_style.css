@@ -1,0 +1,175 @@
+.button0{
+    
+    border-radius: 50%;
+    background-color: rgb(51, 51, 51);
+    padding: 32px;
+    left: 50%;
+    top:10px;
+    position:relative;
+  }
+  
+  .button0:hover{
+    background-color: rgb(0, 0, 0);
+  }
+ul.topnav li.dropdownicon 
+{
+    display: block;
+    float: left;
+}
+
+h1 
+{
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+}
+
+ul.pluto 
+{
+    display: inline-flex;
+    height: 50px;
+    margin-top: 1px;
+    padding-left: 15px;
+}
+
+ul.pluto li 
+{
+    padding: 10px;
+}
+
+nav ul 
+{
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-size: large;
+}
+
+body 
+{
+    background: black;
+    
+}
+
+ul.topnav li 
+{
+    list-style: none;
+    float: left;
+}
+
+ul.topnav li.topnav-right 
+{
+    float: right;
+    font-size: large;
+}
+
+ul.topnav li a 
+{
+    display: block;
+    text-decoration: none;
+    min-height: 16px;
+    text-align: center;
+    padding: 14px;
+    text-transform: uppercase;
+    color:white;
+}
+
+ul.topnav li a:hover 
+{
+    background-color: white;
+    color: black;
+}
+
+.submenu {
+    display: none;
+}
+
+.menu ul.topnav li .submenu {
+    display: block;
+    position: absolute;
+    background: rgb(0, 100, 0);
+    margin-top: 15px;
+    margin-left: -15px;
+}
+
+.menu .topnav li a:hover .submenu ul {
+    display: block;
+    margin: 10px;
+}
+
+.menu ul.topnav li.active a:hover .submenu ul li 
+{
+    width: 150px;
+    padding: 10px;
+    border-bottom: 1px dotted #fff;
+    background: transparent;
+    border-radius: 0;
+    text-align: left;
+}
+.center
+{
+    display: block;
+    margin-left:177.5mm;
+    margin-right: 200mm;
+    margin-top: 55mm;
+    width: 2.9%;
+}
+
+
+
+.wrapper .dynamic-texts
+{
+    margin-left: 450px;
+    line-height: 30px;
+    height: 70px;
+    overflow:hidden;
+}
+
+.wrapper
+{
+    display: inline-flex;
+}
+
+.dynamic-texts li{
+    color:turquoise;
+    list-style: none;
+    font-size: 30px;
+    font-weight: 100;
+    top: 0;   
+    animation: slide 3.5s steps(2) infinite;
+}
+
+@keyframes slide
+{
+    100%
+    {
+        top: -360px;
+    }
+}
+
+.dynamic-texts li span
+{
+    position: relative;
+}
+.dynamic-texts li span::after
+{
+    content: " ";
+    position:absolute;
+    height: 100%;
+    left: 0;
+    background:black;
+    width: 100%;
+    border-left: 2px solid turquoise;
+    animation:typing 3.5s steps(30) infinite;
+}
+
+@keyframes typing
+{
+    100%
+    {
+        left:100%;
+        margin : 0 -35px 0 35px;
+    }
+}
+#transcript{
+    color: aliceblue;
+}

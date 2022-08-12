@@ -1,0 +1,228 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Final_VA.css">
+  <link rel="icon" href="11.png" type="image/png">
+
+    <title>Pluto</title>
+    </head>
+    <body onload="greeting()">
+    <p>   </p>
+    <p>   </p>
+    <p>   </p>
+    <p>   </p>
+
+    <div class="topnav">
+        <a href="new_instructions.html">Instructions</a>
+        <a href="About_Us.html">About Us</a>
+        <a href="team.html">Team</a>
+        <a href="contact_us_new.html">Contact Us</a>
+    </div>
+
+
+    <div class="wrapper1">
+
+        <div class="actions">
+            <!-- <button id="start" style="
+        margin-top: 269px;
+        margin-left: 96px;
+    ">Talk</button> -->
+    <button id="start" class=button0><img src="pics\mic.png" alt="" width="100" height="100"></button>
+
+    </div>
+    <button id="end" style=" background:#a4b0f8 ; margin-top: 296px; margin-left: 820px ;width: 50px;height: 20px;">End</button>
+    <!-- style=" margin-top: 269px; margin-left: 269px" -->
+            
+
+        <div id="transcript"></div>
+    </div>
+                <!-- JS -->
+    <script>
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;          
+// The speech recognition interface lives on the browser’s window object as SpeechRecognition in Firefox and as webkitSpeechRecognition in Chrome. Start by setting the recognition interface to SpeechRecognition (regardless of the browser) using:
+
+    const recognition = new SpeechRecognition();    //The SpeechRecognition() constructor creates a new SpeechRecognition object instance.
+    recognition.interimResults = true;              //Interim results are those results which are not final and default value is false
+    
+    const transcript_element = document.getElementById("transcript");  
+    const talk_button = document.getElementById("start");
+    const end_button = document.getElementById("end");
+
+    let p = document.createElement("p");             //this is where your speech-to-text results will appear
+    transcript_element.appendChild(p);               //So, when you use appendChild() to append an existing child node to another node, the child node is first removed, and then appended at the new position.
+
+    recognition.addEventListener("result", (e) =>    //we need to add an event listener on the recognition, we listen for a “result” rather than a “click”.
+    {
+        const transcript = Array.from(e.results)     
+        //We need to go through the nested results and create a plain old string. We are going to map over it and take the first thing that we have there.
+        // Now we need to map over them once more and return the transcript.
+        .map(result => result [0])
+        .map(result => result.transcript)   
+        .join("");
+        p.textContent = transcript;
+        // It will tell you what was said, and the confidence level. There is an isFinal boolean which tells us if the user has stopped speaking the sentence.
+        if(e.results[0].isFinal)
+        {
+            p = document.createElement("p")
+            p.textContent = transcript;
+            transcript_element.appendChild(p);
+            p.textContent = "";
+
+
+            if(transcript.includes("YouTube"))
+            {
+                window.open('https://www.youtube.com/')
+            }
+            
+            else if(transcript.includes("Wikipedia"))
+            {
+                window.open('https://www.wikipedia.org/')
+            }
+            
+            else if(transcript.includes("Spotify"))
+            {
+                window.open('https://www.spotify.org/')
+            }
+            
+            else if(transcript.includes("Instagram"))
+            {
+                window.open('https://www.instagram.com')
+            }
+            
+            else if(transcript.includes("WhatsApp"))
+            {
+                window.open('https://web.whatsapp.com')
+            }
+            
+            else if(transcript.includes("Facebook"))
+            {
+                window.open('https://www.facebook.com/')
+            }
+            
+            else if(transcript.includes("Telegram"))
+            {
+                window.open('https://web.telegram.org/z/')
+            }
+            
+            else if(transcript.includes("Google"))
+            {
+                window.open('https://www.google.co.in')
+            }
+            
+            else if(transcript.includes("Stocks"))
+            {
+                window.open('https://www.moneycontrol.com/stocksmarketsindia/')
+            }
+            
+            else if(transcript.includes("Cricket score"))
+            {
+                window.open('https://cricbuzz.com')
+            }
+            
+            else if(transcript.includes("Football score"))
+            {
+                window.open('https://www.goal.com/en-in/live-scores')
+            }
+            else if(transcript.includes("Emergency number"))
+            {
+                window.open('https://indianhelpline.com')
+            }
+            
+            else if(transcript.includes("Weather"))
+            {
+                window.open('https://www.weather.com')
+            }
+            else if(transcript.includes("Sports News"))
+            {
+                window.open('https://www.espn.in')
+            }
+            else if(transcript.includes("Maps"))
+            {
+                window.open('https://www.google.com/maps')
+            }
+            else if(transcript.includes("Games"))
+            {
+                window.open('https://elgoog.im/')
+            }
+            
+             if(transcript.includes("Search"))
+            {
+                let input = transcript.split("");
+                input.splice(0,6);
+                input.pop();
+                input = input.join("").split("").join("");
+                console.log(input);
+                window.open('https://www.google.com/search?q='+input);
+            }
+            else if(transcript.includes("Play"))
+            {
+                //split makes string to array of substrings
+                
+                let input = transcript.split("");
+                input.splice(0,4);
+                input.pop();
+                input = input.join("").split("").join("");
+                console.log(input);
+                window.open('https://www.youtube.com/search?q='+input);
+            }
+            else if(transcript.includes("Website"))
+            {
+            
+                let input = transcript.split("");
+                input.splice(0,8);
+                input.pop();
+                input = input.join("").split("").join("");
+                input = input.replace(/ +/g, "");
+                console.log(input);
+                window.open('https://www.'+input+'.com');
+            }
+            
+        }
+    }
+);
+
+    function greeting(){
+        alert("Have A Good Day !")
+    }
+    recognition.addEventListener("end", ()=>{
+        end_button.disabled = false;
+        talk_button.disabled = true;
+    });
+    talk_button.addEventListener("click", () =>{
+        end_button.disabled = false;
+        talk_button.disabled = true;
+        recognition.start();
+    });
+    end_button.addEventListener("click", () => {
+        end_button.disabled = true;
+        talk_button.disabled = false;
+        recognition.stop();
+    });
+
+    </script>
+    </body>
+    </html>
+
+<!-- 
+YOUTUBE
+WIKIPEDIA
+SPOTIFY
+INSTAGRAM 
+WHATSAPP
+TELEGRAM
+FACEBOOK
+GOOGLE
+STOCKS
+CRICKET SCORE
+FOOTBALL SCORE
+EMERGENCY NUMBER
+WEATHER
+SPORTS NEWS
+MAPS
+GAMES 
+SEARCH (KEYWORD)
+PLAY (YOUTUBE) 
+-->
